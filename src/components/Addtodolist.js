@@ -25,6 +25,13 @@ function Addtodolist({ addTodo }) {
     };
 
     addTodo(todo);
+    toast({
+      title: "Success !!!",
+      description: "To Do added",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
     setContent("");
   };
   return (

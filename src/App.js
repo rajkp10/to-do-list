@@ -29,7 +29,7 @@ function App() {
   };
 
   return (
-    <VStack p={8}>
+    <VStack p={4}>
       <IconButton
         icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
         isRound="true"
