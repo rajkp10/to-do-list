@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Todolist from "./components/Todolist";
+import Addtodolist from "./components/Addtodolist";
+import { Heading } from "@chakra-ui/react";
+import { VStack, IconButton, useColorMode } from "@chakra-ui/react";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [todos, setTodos] = useState(
+    () => JSON.parse(localStorage.getItem("todos")) || []
+  );
+
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const deleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    setTodos(newTodos);
+  };
+
+  const addTodo = (todo) => {
+    setTodos([...todos, todo]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VStack p={8}>
+      <IconButton
+        icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
+        isRound="true"
+        size="lg"
+        alignSelf="flex-end"
+        onClick={toggleColorMode}
+      />
+      <Heading
+        pb="8"
+        fontWeight="extrabold"
+        size="2xl"
+        bgGradient="linear(to-r,red.500,pink.300,blue.600)"
+        bgClip="text"
+      >
+        To Do List
+      </Heading>
+      <Addtodolist addTodo={addTodo} />
+      <Todolist todos={todos} deleteTodo={deleteTodo} />
+    </VStack>
   );
 }
 
