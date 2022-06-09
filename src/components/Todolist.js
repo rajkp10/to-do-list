@@ -8,6 +8,7 @@ import {
   Badge,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
+import { motion } from "framer-motion";
 import React from "react";
 
 function Todolist({ todos, deleteTodo }) {
@@ -31,7 +32,12 @@ function Todolist({ todos, deleteTodo }) {
       alignItems="stretch"
     >
       {todos.map((todo) => (
-        <HStack key={todo.id}>
+        <HStack
+          key={todo.id}
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           <Text fontWeight="bold">{todo.body}</Text>
           <Spacer />
           <IconButton
