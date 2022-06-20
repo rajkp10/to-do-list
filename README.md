@@ -1,6 +1,6 @@
 # Live Demo
 
-http://to-do-by-rajkp10.netlify.app/
+http://to-do-rajkp10.netlify.app/
 
 # Tools Used
 
