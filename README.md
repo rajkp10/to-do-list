@@ -6,6 +6,10 @@ http://to-do-rajkp10.netlify.app/
 
 This Web App was made using ReactJS and Chakra UI. In Addition to that, it also supports dark mode.
 
+# Preview
+
+![to-do](https://user-images.githubusercontent.com/96880670/190869447-b8793865-70a9-44b2-9d77-9f63526a4936.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
